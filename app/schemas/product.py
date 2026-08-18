@@ -1,8 +1,9 @@
 from pydantic import BaseModel, Field, ConfigDict
 class ProductResponse(BaseModel):
-    title: str
+    name: str
     price: float
-    category: str
+    category: int
     description: str
+    in_stock: float
 
     model_config = ConfigDict(from_attributes=True)

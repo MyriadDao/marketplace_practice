@@ -1,15 +1,21 @@
 from fastapi import HTTPException
+from sqlalchemy.orm import selectinload
+
 from app.schemas import ProductResponse
+from sqlalchemy.orm import Session, joinedload
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete, func
 from app.db.models import Product
 
 #==============================================================================================
 
-async def get_all_products(db: AsyncSession):
-    query = select(Product)
-    result = await db.execute(query)
-    return result.scalars().all()
+def get_all_products(db: Session):
+    query = (
+        db.query(Product)
+        .options(joinedload(Product.category)) # Joins and loads category data in one trip
+        .all()
+    )
+    return query
 
 #==============================================================================================
 
