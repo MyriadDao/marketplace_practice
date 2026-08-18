@@ -1,8 +1,8 @@
 from pydantic import BaseModel, Field, ConfigDict
 class ProductResponse(BaseModel):
+    id: int
     name: str
     price: float
-    category: int
     description: str
     in_stock: float
 

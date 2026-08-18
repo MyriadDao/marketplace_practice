@@ -10,12 +10,8 @@ from app.db.models import Product
 #==============================================================================================
 
 def get_all_products(db: Session):
-    query = (
-        db.query(Product)
-        .options(joinedload(Product.category)) # Joins and loads category data in one trip
-        .all()
-    )
-    return query
+
+    return db.query(Product).all()
 
 #==============================================================================================
 

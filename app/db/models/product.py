@@ -11,7 +11,6 @@ class Product(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String(100), nullable=False)
     price: Mapped[float] = mapped_column(Numeric(10, 2), nullable=True, default=0.00)
-    category: Mapped[int] = mapped_column(String(50), nullable=True)
     description: Mapped[str] = mapped_column(nullable=True)
     in_stock: Mapped[float] = mapped_column(nullable=True, default=0)
 
